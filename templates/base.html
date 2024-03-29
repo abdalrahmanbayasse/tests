@@ -1,0 +1,42 @@
+{% load static %}
+
+<!doctype html>
+
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="../static/css/output.css" rel="stylesheet">
+        <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}"/>
+
+    </head>
+
+    <body>
+        <div class="p-2 mt-8">
+
+            {% include "components/navbar.html"%}
+
+            <main class="max-w-6xl mx-auto p-6 relative ">
+
+                {% if messages %}
+                    <div class="message mb-6 p-6 bg-gray-800 text-white rounded-xl">
+                        {% for message in messages %}
+                            <p>{{ message }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+
+                {% block content %}
+
+                {% endblock %}
+            </main>
+        </div>
+
+
+
+        {% block scripts %}
+        {% endblock %}
+        {% include "components/footer.html"%}
+
+    </body>
+</html>
